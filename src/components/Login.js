@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 const Login = (props) => {
   return (
@@ -119,7 +120,7 @@ const Hero = styled.div`
   }
 
   img {
-    z-index: -1;
+    /* z-index: -1; */
     width: 700px;
     height: 670px;
     position: absolute;
@@ -164,4 +165,10 @@ const Google = styled.button`
   }
 `;
 
-export default Login;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
