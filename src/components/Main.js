@@ -1,14 +1,41 @@
+import { useState } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
-import PostModal from "./PostModal"
+import PostModal from "./PostModal";
 
 const Main = (props) => {
+  const [showModal, setShowModal] = useState("close");
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (e.target !== e.currentTarget) {
+      return;
+    }
+
+    switch (showModal) {
+      case "open":
+        setShowModal("close");
+        break;
+      case "close":
+        setShowModal("open");
+        break;
+      default:
+        setShowModal("close");
+        break;
+    }
+  };
   return (
     <Container>
       <ShareBox>
-        Share
         <div>
-          <img src="/images/user.svg" alt="" srcset="" />
-          <button>Start a post</button>
+          {props.user && props.user.photoURL ? (
+            <img src={props.user.photoURL} />
+          ) : (
+            <img src="/images/user.svg" alt="" srcset="" />
+          )}
+          <button onClick={handleClick} disabled={props.loading ? true : false}>
+            Start a post
+          </button>
         </div>
         <div>
           <button>
@@ -32,7 +59,8 @@ const Main = (props) => {
           </button>
         </div>
       </ShareBox>
-      <div>
+      <Content>
+        {props.loading && <img src={"/images/spin-loader.gif"} />}
         <Article>
           <SharedActor>
             <a>
@@ -90,8 +118,8 @@ const Main = (props) => {
             </button>
           </SocialActions>
         </Article>
-      </div>
-      <PostModal/>
+      </Content>
+      <PostModal showModal={showModal} handleClick={handleClick} />
     </Container>
   );
 };
@@ -266,25 +294,40 @@ const SocialCounts = styled.ul`
 `;
 
 const SocialActions = styled.div`
-align-items: center;
-display: flex;
-justify-content: flex-start;
-margin: 0;
-min-height: 40px;
-padding: 4px 8px;
-button {
- display: inline-flex;
- align-items: center;
- padding: 8px;
- color: 5e5e5e;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  min-height: 40px;
+  padding: 4px 8px;
+  button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px;
+    color: 55ee5e;
 
- @media(min-width:768px) {
-span{
- margin-left: 3px;
-}
- }
-}
-
+    @media (min-width: 768px) {
+      span {
+        margin-left: 3px;
+      }
+    }
+  }
 `;
 
-export default Main;
+const Content = styled.div`
+  text-align: center;
+  & > img {
+    width: 30px;
+  }
+`;
+
+const mapStateToProps = (state) => {
+  return {
+    loading: state.articleState.loading,
+    user: state.userState.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
