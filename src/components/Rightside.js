@@ -6,12 +6,12 @@ const Rightside = (props) => {
       <FollowCard>
         <Title>
           <h2>Add to your feed</h2>
-          <img src="/images/feed-icon.svg" />
+          <img src="/images/feed-icon.svg" alt=""/>
         </Title>
 
         <FeedList>
           <li>
-            <a>
+            <a href="/">
               <Avatar />
             </a>
             <div>
@@ -20,7 +20,7 @@ const Rightside = (props) => {
             </div>
           </li>
           <li>
-            <a>
+            <a href="/">
               <Avatar />
             </a>
             <div>
@@ -36,7 +36,7 @@ const Rightside = (props) => {
         </Recommendation>
       </FollowCard>
       <BannerCard>
-       <img src="/images/jobs-ad.jpeg" alt=""/>
+       <img src="/images/jobs-ad.png" alt=""/>
       </BannerCard>
     </Container>
   );

@@ -10,7 +10,7 @@ import { getUserAuth } from "./actions";
 function App(props) {
   useEffect(() => {
     props.getUserAuth();
-  }, []);
+  },[]);
   return (
     <div className="App">
       <Router>
@@ -29,11 +29,11 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+	return {};
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getUserAuth: () => dispatch(getUserAuth()),
+	getUserAuth: () => dispatch(getUserAuth()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

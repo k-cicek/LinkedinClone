@@ -8,10 +8,11 @@ import { connect } from "react-redux";
 const Home = (props) => {
   return (
     <Container>
+      <Content>
       {!props.user && <Redirect to="/" />}
       <Section>
         <h5>
-          <a>Hiring in a hurry? - </a>
+          <a href="/">Hiring in a hurry? - </a>
         </h5>
         <p>
           Find talented pros in record time with Upwork and keep business
@@ -23,6 +24,7 @@ const Home = (props) => {
         <Main />
         <Rightside />
       </Layout>
+      </Content>
     </Container>
   );
 };
@@ -40,7 +42,7 @@ const Content = styled.div`
 
 const Section = styled.section`
   min-height: 50px;
-  padding: 16px 0;
+  padding: 0;
   box-sizing: content-box;
   text-align: center;
   text-decoration: underline;
@@ -74,7 +76,7 @@ const Layout = styled.div`
   row-gap: 25px;
   /* grid-template-rows: auto;
  */
-  margin: 25px 0;
+  margin: 0;
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;

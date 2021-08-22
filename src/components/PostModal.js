@@ -68,7 +68,7 @@ const PostModal = (props) => {
             <SharedContent>
               <UserInfo>
                 {props.user.photoURL ? (
-                  <img src={props.user.photoURL} />
+                  <img src={props.user.photoURL} alt="/"/>
                 ) : (
                   <img src="/images/user.svg" alt="" />
                 )}
@@ -95,7 +95,7 @@ const PostModal = (props) => {
                       <label htmlFor="file">Select an image to share</label>
                     </p>
                     {shareImage && (
-                      <img src={URL.createObjectURL(shareImage)} />
+                      <img src={URL.createObjectURL(shareImage)} alt="/"/>
                     )}
                   </UploadImage>
                 ) : (
@@ -294,13 +294,15 @@ const UploadImage = styled.div`
 `;
 
 const mapStateToProps = (state) => {
-  return {
-    user: state.userState.user,
-  };
+	return {
+		user: state.userState.user,
+	};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  postArticle: (payload) => dispatch(postArticleAPI(payload)),
-});
+const mapDispatchToProps = (dispatch) => {
+	return {
+		postArticle: (payload) => dispatch(postArticleAPI(payload)),
+	};
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostModal);

@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.12",
     "webpack": "^4.44.2"
   }
 }
