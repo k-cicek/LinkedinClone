@@ -61,7 +61,7 @@ export function postArticleAPI(payload) {
         .put(payload.image);
       upload.on(
         "state_changed",
-        (snapshot) => {
+        snapshot => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
@@ -102,9 +102,9 @@ export function postArticleAPI(payload) {
         description: payload.description,
       });
       dispatch(setLoading(false));
-    }
+    } 
   };
-}
+} 
 
 export function getArticlesAPI() {
   return (dispatch) => {

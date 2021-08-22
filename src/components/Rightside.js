@@ -84,7 +84,7 @@ const FeedList = styled.ul`
       background-color: transparent;
       color: rgba(0, 0, 0, 0.6);
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6);
-      padding: 16px;
+      padding: 15px;
       align-items: center;
       border-radius: 15px;
       font-weight: 600;
@@ -94,6 +94,7 @@ const FeedList = styled.ul`
       max-width: 480px;
       text-align: center;
       outline: none;
+      margin-bottom: 10px;
     }
   }
 `;
